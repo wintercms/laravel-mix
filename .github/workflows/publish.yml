@@ -1,0 +1,36 @@
+name: Publish to npm
+
+# Publish @wintercms/laravel-mix to the npm registry entirely from the browser:
+#  - "Run workflow" from the Actions tab (workflow_dispatch), or
+#  - Publish a GitHub Release (release: published).
+# Requires an NPM_TOKEN repository secret with publish access to @wintercms.
+
+on:
+    release:
+        types: [published]
+    workflow_dispatch:
+        inputs:
+            ref:
+                description: 'Tag or branch to publish from'
+                required: false
+                default: release/wintercms
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  # Release event -> the release tag; manual run -> the chosen ref.
+                  ref: ${{ github.event.inputs.ref || github.ref }}
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20.x
+                  registry-url: https://registry.npmjs.org
+
+            # publishConfig.access is already "public" in package.json.
+            - name: Publish
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
