@@ -1,7 +1,7 @@
 {
-    "name": "laravel-mix",
-    "version": "6.0.49",
-    "description": "The power of webpack, distilled for the rest of us.",
+    "name": "@wintercms/laravel-mix",
+    "version": "6.1.0",
+    "description": "The power of webpack, distilled for the rest of us. WinterCMS fork of laravel-mix 6 with compatibility for webpack >= 5.107.",
     "main": "src/index.js",
     "types": "types/index.d.ts",
     "scripts": {
@@ -19,11 +19,11 @@
         "mix": "./bin/cli.js",
         "laravel-mix": "./bin/cli.js"
     },
-    "repository": "JeffreyWay/laravel-mix",
+    "repository": "wintercms/laravel-mix",
     "bugs": {
-        "url": "https://github.com/JeffreyWay/laravel-mix/issues"
+        "url": "https://github.com/wintercms/laravel-mix/issues"
     },
-    "homepage": "https://github.com/JeffreyWay/laravel-mix#readme",
+    "homepage": "https://github.com/wintercms/laravel-mix#readme",
     "keywords": [
         "laravel",
         "webpack",
@@ -32,6 +32,9 @@
     ],
     "author": "Jeffrey Way",
     "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
     "files": [
         "icons",
         "setup",
